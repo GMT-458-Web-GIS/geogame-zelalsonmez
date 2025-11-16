@@ -42,13 +42,13 @@ The game will be divided vertically into two main sections using CSS Flexbox.
 The game will use manually defined fixed geographic coordinates of major urban centers in Türkiye.
 
 ### Sample Data Structure (JavaScript Array):
-```javascript
+
 [
     { name: "Ankara", coords: [32.8597, 39.9334] }, // [Longitude, Latitude]
     { name: "İstanbul", coords: [28.9784, 41.0082] },
     //... other citys...
 ]
-'''
+
 
 ## 2.3. Visual Feedback and Animation (CSS Requirement)
 
