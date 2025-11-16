@@ -15,7 +15,7 @@ The game is played with a 30-second time limit.
 
 ## 1.2. Game Flow (Cycle)
 
-| Aşama | Adımlar | Açıklama |
+| Stage | Steps | Explanation |
 | :--- | :--- | :--- |
 | **The Start** | Explanation Screen | Displays the rules of the game and the "Start" button on the left panel. |
 | **Game Start** | Timer and Secret City Selection | When you press the "Start" button, the timer (30 seconds) begins. A random target city is selected. |
