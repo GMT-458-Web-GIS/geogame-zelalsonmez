@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Hunter: Turkey Edition</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css" type="text/css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="game-container">
+        
+        <div id="control-panel">
+            <h1>City Hunter 🇹🇷</h1>
+            
+            <div id="game-instructions">
+                </div>
+            
+            <button id="start-button" onclick="startGame()">OYUNU BAŞLAT</button>
+
+            <div id="game-info" style="width: 100%; text-align: center; margin-top: 15px; display: none;">
+                
+                <div id="timer-display">Süre: 30s</div>
+                <div id="distance-display">Mesafe: ? km</div>
+                
+                <div id="feedback-message"></div>
+                <button id="hint-button" onclick="getHint()" style="display: block;">İPUCU İSTE</button>
+
+            </div>
+            
+            <button id="restart-button" style="display: none;">TEKRAR OYNA</button>
+        </div>
+        
+        <div id="map-panel">
+            <div id="map" class="map"></div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+    
+    <script src="script.js"></script>
+
+</body>
+</html>
