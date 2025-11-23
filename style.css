@@ -1,0 +1,101 @@
+/* Sayfa Düzeltmeleri */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: sans-serif;
+}
+
+/* 2.1. Genel Düzen: Dikey Flexbox ve %100 yükseklik */
+#game-container {
+    display: flex; 
+    height: 100vh; 
+}
+
+/* Kontrol Paneli (SOL) - LİLA ARKA PLAN */
+/* Kontrol Paneli (SOL) - DAHA AÇIK LİLA ARKA PLAN */
+#control-panel {
+    width: 30%; 
+    background-color: #B19CD9; /* 💜 DAHA AÇIK LİLA ARKA PLAN */
+    color: #483D8B; /* Koyu Mor metin (Başlık ve Yönerge için) */
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto; 
+}
+
+#control-panel h1 {
+    font-size: 2em;
+    color: #483D8B; /* Koyu Mor Başlık */
+    margin-bottom: 15px;
+    font-weight: 800; 
+}
+
+/* Yönerge metni (Koyu Mor Yazı Rengi) */
+#game-instructions {
+    font-weight: 300; 
+    line-height: 1.4;
+    text-align: justify !important;
+    color: #483D8B; /* Koyu Mor Metin Rengi */
+    padding: 10px;
+    background-color: #C3B1E1; /* Yönerge kutusu için biraz daha açık lila */
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+}
+/* ... (CSS dosyasının geri kalanı aynı kalır) ... */
+
+/* Harita Paneli (SAĞ) */
+#map-panel {
+    width: 70%; 
+    height: 100%;
+}
+
+/* OpenLayers haritasının tam alanı kaplaması için */
+#map {
+    width: 100%;
+    height: 100%;
+}
+
+/* Zaman ve Mesafe Ekranları */
+#timer-display, #distance-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    transition: color 0.5s; 
+    color: white; /* Timer ve mesafe başlangıçta beyaz kalsın */
+}
+
+/* Buton Stilleri (Koyu Mor Arka Plan) */
+#start-button, #restart-button, #hint-button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #483D8B; /* Koyu Mor Buton Arka Planı */
+    color: white; /* Buton yazısı beyaz kalsın */
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+#start-button:hover, #restart-button:hover, #hint-button:hover:not(:disabled) {
+    background-color: #6A5ACD; /* Hover efekti */
+}
+
+#hint-button:disabled {
+    background-color: #6A5ACD; 
+    cursor: default;
+    color: #D0D0D0; /* Pasif yazı rengi */
+}
+
+#game-info {
+    flex-grow: 1; 
+}
