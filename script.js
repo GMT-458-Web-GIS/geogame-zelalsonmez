@@ -122,7 +122,6 @@ function haversineDistance(coords1, coords2) {
 function initMap() {
     // Yönerge metnini yükleme
     document.getElementById('game-instructions').innerHTML = instructionsText;
-    document.getElementById('game-info').style.display = 'none';
 
     const osmLayer = new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -142,7 +141,7 @@ function initMap() {
     });
     
     map.on('click', handleMapClick);
-    addCityMarkers(cityData, '#9370DB'); // Başlangıçta Lila/Mor noktalar
+    addCityMarkers(cityData, '#9370DB'); 
 }
 
 // Şehirleri haritaya ekleme fonksiyonu
@@ -198,7 +197,7 @@ function startGame() {
     secretCity = cityData[randomIndex];
     
     // Ekranı sıfırlama ve göstergeleri hazırlama
-    addCityMarkers(cityData, '#9370DB'); // Lila/Mor noktalar
+    addCityMarkers(cityData, '#9370DB'); 
     document.getElementById('distance-display').textContent = 'Mesafe: ? km';
     document.getElementById('distance-display').style.color = 'white';
     document.getElementById('start-button').style.display = 'none';
@@ -299,4 +298,20 @@ function endGame(win) {
     secretCity = null; 
 }
 
-window.onload = initMap;
+// Sayfa yüklendiğinde splash screen'i yönet ve initMap'i çağır
+window.onload = function() {
+    const splashScreen = document.getElementById('splash-screen');
+    const gameContainer = document.getElementById('game-container');
+    
+    // 3 saniye sonra kaybolma animasyonunu başlat
+    setTimeout(() => {
+        splashScreen.style.opacity = '0';
+        
+        // Animasyon bittikten sonra display'i none yap ve oyunu göster
+        setTimeout(() => {
+            splashScreen.style.display = 'none';
+            gameContainer.style.display = 'flex'; // Ana oyun ekranını göster
+            initMap(); // Harita ve oyun arayüzünü başlat
+        }, 500); // CSS'deki opacity transition süresi (0.5s) kadar bekler
+    }, 3000); // Logo 3 saniye görünür kalır
+};
