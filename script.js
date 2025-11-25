@@ -1,4 +1,4 @@
-// 2.2. Data to Use - İllerin resmi koordinatları [Boylam, Enlem] ve MEŞHUR ŞEYLER
+// İllerin resmi koordinatları [Boylam, Enlem] ve MEŞHUR ŞEYLER
 const cityData = [
     { name: "ADANA", coords: [35.3324, 36.9719], hint: "Kebabı" },
     { name: "ADIYAMAN", coords: [38.2784, 37.7607], hint: "Nemrut Dağı" },
@@ -96,7 +96,7 @@ const instructionsText = `
 `;
 
 
-// 3.2. Basic Algorithms - Haversine Formülü
+// Haversine Formülü
 function haversineDistance(coords1, coords2) {
     const R = 6371; 
     const toRad = (x) => x * Math.PI / 180;
@@ -120,7 +120,7 @@ function haversineDistance(coords1, coords2) {
 
 // Harita başlatma ve temel fonksiyonlar
 function initMap() {
-    // Yönerge metnini yükleme
+    
     document.getElementById('game-instructions').innerHTML = instructionsText;
 
     const osmLayer = new ol.layer.Tile({
@@ -242,7 +242,7 @@ function handleMapClick(event) {
         feature.setStyle(new ol.style.Style({
             image: new ol.style.Circle({
                 radius: 6,
-                fill: new ol.style.Fill({ color: '#483D8B' }), // Koyu Mor Tahmin Noktası
+                fill: new ol.style.Fill({ color: '#483D8B' }), 
                 stroke: new ol.style.Stroke({ color: '#fff', width: 1 })
             })
         }));
@@ -271,16 +271,10 @@ function endGame(win) {
     document.getElementById('timer-display').style.color = 'white';
     document.getElementById('hint-button').style.display = 'none'; 
     
-    if (win) {
-        document.getElementById('feedback-message').textContent = `TEBRİKLER! ${secretCity.name} şehrini ${30 - timeLeft} saniyede buldunuz.`;
-        document.getElementById('distance-display').textContent = 'Mesafe: 0 km (KAZANDINIZ)';
-        document.getElementById('distance-display').style.color = '#008000'; // Yeşil Kazandınız Yazısı
-    } else {
-        document.getElementById('feedback-message').textContent = `SÜRE DOLDU! Gizli şehir ${secretCity.name} idi.`;
-        document.getElementById('distance-display').textContent = 'Mesafe: Çok Uzak (KAYBETTİNİZ)';
-        document.getElementById('distance-display').style.color = '#FF0000'; // Kırmızı Kaybettiniz Yazısı
-    }
-
+    const winGifOverlay = document.getElementById('win-gif-overlay');
+    const loseGifOverlay = document.getElementById('lose-gif-overlay');
+    const restartButton = document.getElementById('restart-button');
+    
     // Gizli şehri yeşil renkte işaretle
     const secretFeature = markerLayer.getSource().getFeatures().find(f => f.get('name') === secretCity.name);
     if (secretFeature) {
@@ -293,8 +287,35 @@ function endGame(win) {
         }));
     }
 
-    document.getElementById('restart-button').style.display = 'block';
-    document.getElementById('restart-button').onclick = startGame; 
+    if (win) {
+        document.getElementById('feedback-message').textContent = `TEBRİKLER! ${secretCity.name} şehrini ${30 - timeLeft} saniyede buldunuz.`;
+        document.getElementById('distance-display').textContent = 'Mesafe: 0 km (KAZANDINIZ)';
+        document.getElementById('distance-display').style.color = '#008000'; // Yeşil Kazandınız Yazısı
+
+        // Kazanma GIF'ini göster
+        winGifOverlay.style.display = 'flex'; 
+
+        setTimeout(() => {
+            winGifOverlay.style.display = 'none'; 
+            restartButton.style.display = 'block'; 
+            restartButton.onclick = startGame; 
+        }, 3000); 
+
+    } else {
+        document.getElementById('feedback-message').textContent = `SÜRE DOLDU! Gizli şehir ${secretCity.name} idi.`;
+        document.getElementById('distance-display').textContent = 'Mesafe: Çok Uzak (KAYBETTİNİZ)';
+        document.getElementById('distance-display').style.color = '#FF0000'; // Kırmızı Kaybettiniz Yazısı
+        
+        // Kaybetme GIF'ini göster
+        loseGifOverlay.style.display = 'flex';
+
+        setTimeout(() => {
+            loseGifOverlay.style.display = 'none'; 
+            restartButton.style.display = 'block'; 
+            restartButton.onclick = startGame; 
+        }, 3000);
+    }
+    
     secretCity = null; 
 }
 
@@ -310,8 +331,8 @@ window.onload = function() {
         // Animasyon bittikten sonra display'i none yap ve oyunu göster
         setTimeout(() => {
             splashScreen.style.display = 'none';
-            gameContainer.style.display = 'flex'; // Ana oyun ekranını göster
-            initMap(); // Harita ve oyun arayüzünü başlat
-        }, 500); // CSS'deki opacity transition süresi (0.5s) kadar bekler
-    }, 3000); // Logo 3 saniye görünür kalır
+            gameContainer.style.display = 'flex'; 
+            initMap(); 
+        }, 500); 
+    }, 3000); 
 };
