@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #333; /* Logonun arka plan rengi */
+    background-color: #333; 
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
 #logo-image {
     max-width: 80%; 
     max-height: 80%;
-    animation: heartbeat 0.75s infinite alternate; /* Hızlı kalp atışı */
+    animation: heartbeat 0.75s infinite alternate; 
 }
 
 @keyframes heartbeat {
@@ -28,6 +28,47 @@
         transform: scale(1.05); 
     }
 }
+
+/* Kazanma GIF'i overlay stilleri */
+#win-gif-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; 
+}
+
+#congratulations-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* Kaybetme GIF'i overlay stilleri */
+#lose-gif-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1002; 
+}
+
+#gameover-gif {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
 
 /* Sayfa Düzeltmeleri */
 html, body {
@@ -45,8 +86,8 @@ html, body {
 /* Kontrol Paneli (SOL) - DAHA AÇIK LİLA ARKA PLAN */
 #control-panel {
     width: 30%; 
-    background-color: #B19CD9; /* Daha açık Lila Arka Plan */
-    color: #483D8B; /* Koyu Mor metin */
+    background-color: #B19CD9; 
+    color: #483D8B;
     padding: 20px;
     box-sizing: border-box;
     display: flex;
@@ -58,7 +99,7 @@ html, body {
 
 #control-panel h1 {
     font-size: 2em;
-    color: #483D8B; /* Koyu Mor Başlık */
+    color: #483D8B; 
     margin-bottom: 15px;
     font-weight: 800; 
 }
@@ -68,9 +109,9 @@ html, body {
     font-weight: 300; 
     line-height: 1.4;
     text-align: justify !important;
-    color: #483D8B; /* Koyu Mor Metin Rengi */
+    color: #483D8B; 
     padding: 10px;
-    background-color: #C3B1E1; /* Yönerge kutusu için biraz daha açık lila */
+    background-color: #C3B1E1; 
     border-radius: 5px;
     font-size: 0.9em;
     margin-bottom: 20px;
@@ -97,7 +138,7 @@ html, body {
     border-radius: 5px;
     width: 80%;
     transition: color 0.5s; 
-    color: white; /* Timer ve mesafe başlangıçta beyaz kalsın */
+    color: white; 
 }
 
 /* Buton Stilleri (Koyu Mor Arka Plan) */
@@ -106,8 +147,8 @@ html, body {
     margin-top: 15px;
     font-size: 1em;
     cursor: pointer;
-    background-color: #483D8B; /* Koyu Mor Buton Arka Planı */
-    color: white; /* Buton yazısı beyaz kalsın */
+    background-color: #483D8B; 
+    color: white; 
     border: none;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -115,13 +156,13 @@ html, body {
 }
 
 #start-button:hover, #restart-button:hover, #hint-button:hover:not(:disabled) {
-    background-color: #6A5ACD; /* Hover efekti */
+    background-color: #6A5ACD; 
 }
 
 #hint-button:disabled {
     background-color: #6A5ACD; 
     cursor: default;
-    color: #D0D0D0; /* Pasif yazı rengi */
+    color: #D0D0D0; 
 }
 
 #game-info {
